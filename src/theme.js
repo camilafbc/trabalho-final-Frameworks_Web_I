@@ -5,7 +5,10 @@ const theme = createTheme({
     primary: { main: '#d946ef' },
     secondary: { main: '#f59e0b' },
     background: { default: '#121212', paper: '#1e293b' },
-    color: { text: '#ffffff' },
+    text: {
+      primary: '#ffffff', // Define o texto padrão como branco
+      secondary: '#94a3b8',
+    },
   },
   typography: { fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif' },
   shape: { borderRadius: 12 },
