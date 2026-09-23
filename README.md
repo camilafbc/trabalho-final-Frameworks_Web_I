@@ -1,8 +1,14 @@
-# CineFlow
+# 🎬 CineFlow
 
-Projeto Final da disciplina **Frameworks Web I**.
 
-O CineFlow é uma plataforma de busca de filmes desenvolvida com React e Vite, integrada à [API do TMDB](https://developer.themoviedb.org/docs). A aplicação permite pesquisar filmes por título, navegar por categorias de gênero, consultar filmes populares e visualizar os detalhes de cada filme.
+O CineFlow é uma plataforma de busca de filmes desenvolvida com React e Vite, integrada à [API do TMDB](https://developer.themoviedb.org/docs) e é o Projeto Final da disciplina **Frameworks Web I**. A aplicação permite pesquisar filmes por título, navegar por categorias de gênero, consultar filmes populares e visualizar os detalhes de cada filme.
+
+<img width="1794" height="2898" alt="image" src="https://github.com/user-attachments/assets/f0b91a9b-4a17-4d33-a1dc-e854e95e0384" />
+
+
+
+Acesso: [CineFlow](https://trabalho-final-frameworks-web-i.vercel.app/)
+
 
 Integrantes:
 
@@ -71,4 +77,4 @@ npm run preview    # Visualiza a build de produção localmente
 npm run lint       # Executa a verificação do ESLint
 ```
 
-Não compartilhe o conteúdo do arquivo `.env` nem publique sua chave da API.
+
