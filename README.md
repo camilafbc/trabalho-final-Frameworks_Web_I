@@ -1,16 +1,74 @@
-# React + Vite
+# CineFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto Final da disciplina **Frameworks Web I**.
 
-Currently, two official plugins are available:
+O CineFlow é uma plataforma de busca de filmes desenvolvida com React e Vite, integrada à [API do TMDB](https://developer.themoviedb.org/docs). A aplicação permite pesquisar filmes por título, navegar por categorias de gênero, consultar filmes populares e visualizar os detalhes de cada filme.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Integrantes:
 
-## React Compiler
+- Anna Alexandre Olímpio
+- Camila Fernanda Batista Coelho
+- Lucas Paredes Braga
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Busca de filmes por título;
+- Navegação por gêneros/categorias;
+- Listagem de filmes populares;
+- Paginação dos resultados;
+- Visualização dos detalhes de um filme;
+- Interface em português do Brasil.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologias
+
+- React;
+- Vite;
+- React Router;
+- Material UI;
+- Axios;
+- API do TMDB.
+
+## Como executar localmente
+
+### Pré-requisitos
+
+- Node.js instalado;
+- Uma chave de acesso da API do TMDB.
+
+### Instalação
+
+1. Clone o repositório e acesse a pasta do projeto:
+
+   ```bash
+   git clone https://github.com/camilafbc/trabalho-final-Frameworks_Web_I
+   ```
+
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+3. Crie um arquivo `.env` na raiz do projeto e informe o token da API do TMDB:
+
+   ```env
+   VITE_TMDB_API_KEY=seu_token_do_tmdb
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Abra no navegador o endereço exibido pelo Vite, normalmente `http://localhost:5173`.
+
+## Outros comandos
+
+```bash
+npm run build      # Gera a versão de produção
+npm run preview    # Visualiza a build de produção localmente
+npm run lint       # Executa a verificação do ESLint
+```
+
+Não compartilhe o conteúdo do arquivo `.env` nem publique sua chave da API.
