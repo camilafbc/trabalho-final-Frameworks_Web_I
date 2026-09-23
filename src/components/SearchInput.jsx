@@ -1,8 +1,13 @@
 import { InputBase, IconButton, Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function SearchInput({ value, onChange }) {
-  console.log(value, onChange);
+export default function SearchInput({ value, onChange, onSubmit }) {
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSubmit();
+    }
+  };
 
   return (
     <Box
@@ -21,6 +26,7 @@ export default function SearchInput({ value, onChange }) {
         type="button"
         sx={{ p: "10px", color: "text.primary" }}
         aria-label="search"
+        onClick={onSubmit}
       >
         <SearchIcon />
       </IconButton>
@@ -28,6 +34,9 @@ export default function SearchInput({ value, onChange }) {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Buscar filmes"
         inputProps={{ "aria-label": "Buscar filmes" }}
+        value={value}
+        onChange={onChange}
+        onKeyDown={handleKeyDown}
       />
     </Box>
   );

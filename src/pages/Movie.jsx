@@ -1,45 +1,46 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { getMovieDetails } from "../api/tmdb";
 import { Box, Typography, Chip } from "@mui/material";
 import BreadCrumb from "../components/BreadCrumb";
+import Loader from "../components/Loader";
+import ErrorComponent from "../components/Error";
+import { useMovies } from "../hooks/useMovies";
+import { formatDate } from "../utils/formatDate";
+import BackButton from "../components/BackButton";
 
 export default function MovieDetail() {
   const { id } = useParams();
 
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const { fetchMovieDetails, loadingDetails, errorDetails } = useMovies();
 
   useEffect(() => {
-    // const movieId = parseInt(id);
-
-    const fetchMovieDetails = async () => {
-      setLoading(true);
-
-      try {
-        const movieDetails = await getMovieDetails(id);
-        setMovie(movieDetails);
-      } catch (error) {
-        console.error("Error fetching movie details:", error);
-      } finally {
-        setLoading(false);
+    async function fetchDetails() {
+      const details = await fetchMovieDetails(id);
+      if (details) {
+        setMovie(details);
       }
-    };
+    }
 
-    fetchMovieDetails();
-  }, [id]);
+    fetchDetails();
+  }, [fetchMovieDetails, id]);
 
-  if (loading) {
-    return <div>Carregando...</div>;
+  if (loadingDetails) {
+    return <Loader />;
   }
 
   if (!movie) {
-    return <div>Filme não encontrado</div>;
+    return <ErrorComponent errorMessage="Filme não encontrado." />;
+  }
+
+  if (errorDetails) {
+    return <ErrorComponent errorMessage={errorDetails} />;
   }
 
   return (
     <>
       <BreadCrumb items={[{ label: movie ? movie.title : "Filme" }]} />
+      <BackButton />
       <Box
         sx={{
           position: "relative",
@@ -81,7 +82,7 @@ export default function MovieDetail() {
           </Typography>
         </Box>
       </Box>
-      <Box variant="div" sx={{ p: 4 }}>
+      <Box variant="div">
         <Box
           variant="div"
           sx={{
@@ -107,6 +108,24 @@ export default function MovieDetail() {
         >
           {movie.overview}
         </Typography>
+        <Box variant="div" sx={{ mt: 4, mb: 10 }}>
+          <Typography variant="h6" component="h2" gutterBottom>
+            Informações adicionais
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            <strong>País de origem:</strong> {movie.origin_country.join(", ")}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            <strong>Data de lançamento:</strong>{" "}
+            {formatDate(movie.release_date)}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            <strong>Duração:</strong> {movie.runtime} minutos
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            <strong>Nota:</strong> {movie.vote_average}
+          </Typography>
+        </Box>
       </Box>
     </>
   );
