@@ -3,7 +3,6 @@ import { getPopularMovies } from "../api/tmdb";
 import MovieCard from "../components/MovieCard";
 import { Box } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import theme from "../theme";
 import { Link } from "react-router";
 
@@ -14,9 +13,9 @@ function Home() {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    setLoading(true);
     const fetchMovies = async () => {
       try {
+        setLoading(true);
         const list = await getPopularMovies(page);
         setMovieList(list.results);
         setTotalPages(list.total_pages > 500 ? 500 : list.total_pages);
