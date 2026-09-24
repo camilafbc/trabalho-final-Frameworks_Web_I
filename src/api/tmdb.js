@@ -39,7 +39,6 @@ export const getFilmGenres = async () => {
 export const getMovieDetails = async (id) => {
   try {
     const response = await tmdbAPI.get(`/movie/${id}?language=pt-BR`);
-    console.log('Movie details response:', response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching movie details:', error);
@@ -53,6 +52,6 @@ export const searchMovies = async (query, page = 1) => {
     return response.data;
   } catch (error) {
     console.error('Error fetching movies:', error);
-    throw new Error('Erro na busca', { cause: error });
+    throw new Error('Erro na busca do filme', { cause: error });
   }
 };

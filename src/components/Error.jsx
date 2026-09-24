@@ -24,7 +24,7 @@ export default function ErrorComponent({ errorMessage }) {
         }}
       >
         <ErrorIcon style={{ fontSize: 50 }} />
-        <p>{errorMessage}</p>
+        <p>{errorMessage.message}</p>
       </Box>
     </Box>
   );

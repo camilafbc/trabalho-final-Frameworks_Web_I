@@ -99,6 +99,7 @@ function Home() {
           gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
         }}
       >
+        {movieList.length === 0 && <p>Nenhum filme encontrado.</p>}
         {movieList.map((movie) => (
           <Link key={movie.id} to={`/filme/${movie.id}`}>
             <MovieCard key={movie.id} movie={movie} />
