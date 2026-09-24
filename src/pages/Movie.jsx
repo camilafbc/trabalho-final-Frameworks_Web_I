@@ -45,13 +45,13 @@ export default function MovieDetail() {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "300px", md: "450px" }, // Altura responsiva para o banner
-          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+          height: { xs: "300px", md: "450px" },
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path ?? movie.poster_path})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           borderRadius: 3,
           display: "flex",
-          alignItems: "flex-end", // Joga o conteúdo para a parte de baixo do banner
+          alignItems: "flex-end",
           mb: 4,
           overflow: "hidden",
           // Um overlay escuro para garantir que o texto fique legível sobre a imagem
@@ -93,13 +93,10 @@ export default function MovieDetail() {
             mb: 2,
           }}
         >
-          {movie.genres.length > 1 ? (
+          {movie.genres.length > 0 &&
             movie.genres.map((genre) => (
-              <Chip key={genre.id} color="secondary" label={genre.name} />
-            ))
-          ) : (
-            <Chip color="secondary" label={movie.genres[0].name} />
-          )}
+              <Chip key={genre.id} color="secondary" label={genre?.name} />
+            ))}
         </Box>
         <Typography
           variant="body1"
@@ -113,17 +110,17 @@ export default function MovieDetail() {
             Informações adicionais
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>País de origem:</strong> {movie.origin_country.join(", ")}
+            <strong>País de origem:</strong> {movie?.origin_country.join(", ")}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <strong>Data de lançamento:</strong>{" "}
             {formatDate(movie.release_date)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>Duração:</strong> {movie.runtime} minutos
+            <strong>Duração:</strong> {movie?.runtime} minutos
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <strong>Nota:</strong> {movie.vote_average}
+            <strong>Nota:</strong> {movie?.vote_average}
           </Typography>
         </Box>
       </Box>
